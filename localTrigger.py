@@ -1,12 +1,12 @@
-from flask import Flask 
-import os
+from flask import Flask , request 
 
 app = Flask(__name__)
 @app.route('/trigger')
 
-def trigger():
-    os.system("The port is Triggered")
-    return "Triggered"
+def trigger(method=['GET']):
+    if request.method == "GEt":
+        return "Triggered the port"
 
-app.run(host="127.0.0.1",port=5000)
+if __name__ == "__main__":
+    app.run(debug=True)
 
